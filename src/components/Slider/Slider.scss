@@ -1,0 +1,45 @@
+.banner {
+	position: fixed;
+	display: flex;
+	flex-wrap: wrap;
+	// align-items: center;
+	height: 200vh;
+	width: 100%;
+	overflow: hidden;
+}
+
+.first-slider {
+	position: sticky;
+	height: 100%;
+	width: 100%;
+	background-color: rgb(1, 23, 140);
+	transition: all 2s cubic-bezier(0.44, 0.68, 0, 1.27);
+
+	&.loaded {
+		width: 30%;
+	}
+}
+.second-slider {
+	position: sticky;
+	width: 100%;
+	transition: all 0.8s cubic-bezier(0.44, 0.68, 0, 1.27);
+
+	&.loaded {
+		width: 70%;
+	}
+}
+
+.banner-title {
+	font-weight: 700;
+	opacity: 0;
+	top: 10%;
+	left: 40%;
+	/* transform: translate(-40%, -10%); */
+	color: black;
+	position: absolute;
+	transition: all 1s cubic-bezier(0.44, 0.68, 0, 1.27);
+
+	&.loaded {
+		opacity: 1;
+	}
+}
