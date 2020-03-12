@@ -11,6 +11,13 @@ const App = () => {
 			<Navbar />
 
 			<Slider />
+
+			{/* 
+			Padding-top is the way to go
+			<div className="fdsaf">
+				<h1>hejs</h1>
+			</div>
+			*/}
 		</div>
 	)
 }
