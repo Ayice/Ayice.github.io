@@ -1,3 +1,5 @@
+@import '../../mixins.scss';
+
 .banner {
 	position: fixed;
 	display: flex;
@@ -12,7 +14,7 @@
 	position: sticky;
 	height: 100%;
 	width: 100%;
-	background-color: rgb(1, 23, 140);
+	background-color: map-get($colors, 'dark');
 	transition: all 2s cubic-bezier(0.44, 0.68, 0, 1.27);
 
 	&.loaded {

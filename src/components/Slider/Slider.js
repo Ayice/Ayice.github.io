@@ -8,7 +8,7 @@ class Slider extends Component {
 		super(props)
 
 		this.state = {
-			scrollY: 0
+			scrollY: window.pageYOffset
 		}
 
 		this.handleLoad = this.handleLoad.bind(this)
@@ -33,33 +33,37 @@ class Slider extends Component {
 		this.handleLoad()
 
 		window.onscroll = () => {
-			const banner = document.querySelector('.banner')
 			this.setState({
 				scrollY: window.pageYOffset
 			})
+			const banner = document.querySelector('.banner')
+			// console.log(window.pageYOffset)
 
-			if (this.state.scrollY === 0 && firstSlider.classList.contains('loaded')) {
+			if (window.pageYOffset === 0 && firstSlider.classList.contains('loaded')) {
 				firstSlider.classList.remove('loaded')
 				secondSlider.classList.remove('loaded')
+				banner.style.height = '200vh'
 			} else {
 				firstSlider.classList.add('loaded')
 				secondSlider.classList.add('loaded')
 			}
-			if (this.state.scrollY > 200) {
+			if (window.pageYOffset > 200) {
 				bannerTitle.classList.remove('loaded')
 			} else {
 				bannerTitle.classList.add('loaded')
 			}
 			// Keeps increasing no matter where i scroll
-			if (this.state.scrollY > 500) {
-				console.log(banner.offsetHeight)
-				banner.style.height = banner.offsetHeight - 50 + 'px'
-
-				if (banner.offsetHeight < 100) {
-					banner.style.height = banner.offsetHeight - 2 + 'px'
-				}
+			if (window.pageYOffset > 500) {
+				banner.style.height = banner.offsetHeight * 0.89 + 'px'
 			} else {
-				banner.style.height = banner.offsetHeight + 50 + 'px'
+				banner.style.height = banner.offsetHeight * 1.8 + 'px'
+				banner.style.maxHeight = '200vh'
+			}
+			if (banner.style.height < '20px') {
+				console.log('test')
+				// 	banner.style.display = 'none'
+			} else {
+				banner.style.display = 'flex'
 			}
 		}
 	}
@@ -83,7 +87,6 @@ class Slider extends Component {
 	}
 
 	render() {
-		const { scrollY } = this.state
 		return (
 			<div ref={this.banner} className='banner'>
 				<div ref={this.firstSliderRef} className='first-slider'></div>
@@ -96,7 +99,7 @@ class Slider extends Component {
 					</p>
 				</div>
 
-				<Profile class={scrollY > 200 ? true : false} />
+				<Profile class={this.state.scrollY > 200 ? true : false} />
 			</div>
 		)
 	}

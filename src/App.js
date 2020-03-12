@@ -3,11 +3,12 @@ import React from 'react'
 import Slider from './components/Slider/Slider'
 
 import './App.scss'
+import Navbar from './components/Navbar/Navbar'
 
 const App = () => {
 	return (
 		<div className='App'>
-			<header className='App-header'></header>
+			<Navbar />
 
 			<Slider />
 		</div>
